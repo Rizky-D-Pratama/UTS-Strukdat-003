@@ -7,34 +7,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!--
-    ====================================================================
-    KONTRAK HTML <-> app.js  (ringkas)
-    --------------------------------------------------------------------
-    Yang SUDAH jalan tanpa JavaScript:
-      - Buka/tutup keranjang   -> checkbox #cartToggle
-      - Pindah tab log         -> radio #tabSort / #tabSearch
-      - Buka/tutup panel log   -> <details id="logPanel">
-    Dari JS cukup:  document.getElementById("cartToggle").checked = true;
-                    document.getElementById("tabSearch").checked = true;
-                    document.getElementById("logPanel").open = true;
-
-    Yang HARUS diisi oleh app.js:
-      #productGrid, #resultInfo, #emptyState, #cartItems, #cartEmpty,
-      #cartTotal, #cartCount, #sortLog, #searchLog, dan ringkasan log
-      (#sumSort..., #sumSearch...)
-    Template untuk di-clone: #tplProduct, #tplCartItem, #tplLogLine
-    ====================================================================
-  -->
-
   <!-- Dipakai oleh label keranjang (header), overlay, dan tombol tutup -->
   <input type="checkbox" id="cartToggle" class="sr-only" aria-label="Buka atau tutup keranjang">
 
-  <!-- ============================================================
-       SPRITE ILUSTRASI PRODUK (SVG)
-       Dipakai lewat:  <svg viewBox="0 0 120 120"><use href="#ill-akustik"></use></svg>
-       ============================================================ -->
+  <!-- ------------------------
+       SPRITE ILUSTRASI PRODUK
+       ------------------------ -->
   <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
     <defs>
 
@@ -70,7 +48,7 @@
         </g>
       </symbol>
 
-      <!-- GITAR BAS -->
+      <!-- GITAR BASS -->
       <symbol id="ill-bass" viewBox="0 0 120 120">
         <g transform="translate(60 60) rotate(35) scale(.82) translate(-60 -60)">
           <rect class="i-wood-dk" x="56" y="8" width="8" height="68"/>
@@ -235,12 +213,9 @@
     </defs>
   </svg>
 
-  <!-- ============================================================
-       TEMPLATE (di-clone oleh app.js)
-       ============================================================ -->
-
-  <!-- Kartu produk. data-kategori: gitar | keyboard | perkusi | aksesori.
-       Class bantu: .is-match (hasil pencarian)  .is-soldout (stok 0) -->
+  <!-- ------------------------
+               TEMPLATE
+       ------------------------ -->
   <template id="tplProduct">
     <article class="card" data-kategori="gitar">
       <div class="card-media">
@@ -286,13 +261,9 @@
     </li>
   </template>
 
-  <!-- ============================================================
-       HALAMAN
-       ============================================================ -->
-
-  <div class="topbar">
-    <p>Gratis ongkir untuk pembelian di atas Rp 1.000.000</p>
-  </div>
+  <!-- ------------------------
+               HALAMAN
+       ------------------------ -->
 
   <header class="site-header">
     <div class="container header-main">
@@ -323,17 +294,6 @@
       </label>
 
     </div>
-
-    <!-- Filter kategori: OPSIONAL. Kalau tidak dipakai, hapus seluruh <nav> ini. -->
-    <nav class="category-nav" aria-label="Kategori produk">
-      <div class="container">
-        <button type="button" class="chip is-active" data-kategori="semua">Semua</button>
-        <button type="button" class="chip" data-kategori="gitar">Gitar</button>
-        <button type="button" class="chip" data-kategori="keyboard">Keyboard &amp; Piano</button>
-        <button type="button" class="chip" data-kategori="perkusi">Perkusi</button>
-        <button type="button" class="chip" data-kategori="aksesori">Aksesori</button>
-      </div>
-    </nav>
   </header>
 
   <section class="hero" id="top">
@@ -361,7 +321,7 @@
       <div class="toolbar-actions">
         <label class="sort-label" for="sortSelect">Urutkan</label>
         <select id="sortSelect" class="select">
-          <option value="sku-asc">Paling sesuai (SKU)</option>
+          <option value="" selected disabled hidden>Urutan awal</option>
           <option value="harga-asc">Harga: termurah</option>
           <option value="harga-desc">Harga: termahal</option>
           <option value="rating-desc">Rating tertinggi</option>
@@ -382,14 +342,14 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p><strong>Century</strong> · toko alat musik fiktif untuk tugas Struktur Data.</p>
+      <p><strong>Century</strong> · toko alat musik (UTS Struktur Data Rizky Doni - 25050974003 - 2025A).</p>
       <p>© 2026 Century</p>
     </div>
   </footer>
 
-  <!-- ============================================================
-       KERANJANG (geser dari kanan)
-       ============================================================ -->
+  <!-- ------------------------
+              KERANJANG
+       ------------------------ -->
   <label for="cartToggle" class="overlay" aria-hidden="true"></label>
 
   <aside class="cart-panel" aria-label="Keranjang belanja">
@@ -410,11 +370,10 @@
     </div>
   </aside>
 
-  <!-- ============================================================
-       PANEL LOG  (menempel di bawah layar, bisa dilipat)
-       Hapus atribut "open" kalau ingin awalnya tertutup.
-       ============================================================ -->
-  <details class="log-dock" id="logPanel" open>
+  <!-- ------------------------
+              PANEL LOG
+       ------------------------ -->
+  <details class="log-dock" id="logPanel">
     <summary class="log-bar">
       <span class="container log-bar-inner">
         <span class="log-title">Log Proses</span>
@@ -469,6 +428,8 @@
       </div>
     </div>
   </details>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="app.js"></script>
 </body>

@@ -1,32 +1,25 @@
-/* =====================================================================
-   CENTURY — Toko Alat Musik
-   Palet B: abu kebiruan + navy + terracotta (redup, tidak menyala)
-   ===================================================================== */
-
 :root {
-  /* Warna dasar */
-  --bg:        #dde3e7;
-  --surface:   #f1f4f6;
-  --surface-2: #e8edf0;
-  --border:    #c3ccd3;
+  --bg:#dde3e7;
+  --surface:#f1f4f6;
+  --surface-2:#e8edf0;
+  --border:#c3ccd3;
 
-  --navy:      #2f4858;
-  --navy-dark: #243a47;
-  --navy-lt:   #46606f;
+  --navy:#2f4858;
+  --navy-dark:#243a47;
+  --navy-lt:#46606f;
 
-  --clay:      #b5694a;   /* aksen dekoratif */
-  --clay-btn:  #a65b3d;   /* latar tombol (kontras teks putih ±5:1) */
-  --clay-btn-hover: #8f4b31;
-  --clay-text: #9a5538;   /* teks harga di atas kartu terang */
+  --clay:#b5694a;
+  --clay-btn:#a65b3d;
+  --clay-btn-hover:#8f4b31;
+  --clay-text:#9a5538;
 
-  --text:      #1f2d36;
-  --muted:     #4f616b;
+  --text:#1f2d36;
+  --muted:#4f616b;
 
-  /* Latar ilustrasi per kategori */
-  --tint-gitar:    #e6d9cb;
-  --tint-keyboard: #d3dee6;
-  --tint-perkusi:  #e5d5cd;
-  --tint-aksesori: #d9e1d8;
+  --tint-gitar:#e6d9cb;
+  --tint-keyboard:#d3dee6;
+  --tint-perkusi:#e5d5cd;
+  --tint-aksesori:#d9e1d8;
 
   --radius: 10px;
   --shadow: 0 1px 2px rgba(36, 58, 71, .08), 0 4px 14px rgba(36, 58, 71, .08);
@@ -73,10 +66,9 @@ button { cursor: pointer; }
   border: 0;
 }
 
-/* Sprite SVG tidak boleh memakan ruang */
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 
-/* ---------- Warna ilustrasi (dipakai di dalam <symbol>) ---------- */
+/* ---------- Warna ilustrasi ---------- */
 .i-wood    { fill: #c99a6b; }
 .i-wood-lt { fill: #d9b48a; }
 .i-wood-dk { fill: #8f5f3f; }
@@ -125,17 +117,9 @@ button { cursor: pointer; }
   cursor: pointer;
 }
 
-/* =====================================================================
-   HEADER
-   ===================================================================== */
-.topbar {
-  background: var(--navy-dark);
-  color: #cfdae1;
-  font-size: .8rem;
-  text-align: center;
-  padding: 6px 16px;
-}
-
+/* --------------------------------
+            HEADER
+   -------------------------------- */
 .site-header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -206,7 +190,6 @@ button { cursor: pointer; }
 }
 .search-btn:hover { background: var(--navy-dark); }
 
-/* Tombol keranjang (label untuk checkbox #cartToggle) */
 .cart-btn {
   position: relative;
   display: inline-flex;
@@ -238,33 +221,9 @@ button { cursor: pointer; }
   font-weight: 700;
 }
 
-/* Nav kategori */
-.category-nav { border-top: 1px solid var(--border); }
-.category-nav .container {
-  display: flex;
-  gap: 8px;
-  padding: 10px 0;
-  overflow-x: auto;
-}
-.chip {
-  flex: none;
-  padding: 6px 15px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: #fff;
-  font-size: .9rem;
-  transition: background-color .15s, border-color .15s, color .15s;
-}
-.chip:hover { border-color: var(--navy); }
-.chip.is-active {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #fff;
-}
-
-/* =====================================================================
-   HERO
-   ===================================================================== */
+/* --------------------------------
+              HERO
+   -------------------------------- */
 .hero {
   background: var(--navy);
   color: #eef3f6;
@@ -312,16 +271,15 @@ button { cursor: pointer; }
 .hero-disc svg { width: 82%; height: auto; }
 .hero-disc:nth-child(2) { transform: translateY(-12px); }
 
-/* Tint per kategori (dipakai di hero, kartu, dan thumbnail keranjang) */
 [data-kategori="gitar"]    { --tint: var(--tint-gitar); }
 [data-kategori="keyboard"] { --tint: var(--tint-keyboard); }
 [data-kategori="perkusi"]  { --tint: var(--tint-perkusi); }
 [data-kategori="aksesori"] { --tint: var(--tint-aksesori); }
 .hero-disc { background: var(--tint, var(--surface)); }
 
-/* =====================================================================
-   KATALOG
-   ===================================================================== */
+/* --------------------------------
+              KATALOG
+   -------------------------------- */
 .toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -357,11 +315,6 @@ button { cursor: pointer; }
   transition: box-shadow .18s, transform .18s, border-color .18s;
 }
 .card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
-
-.card.is-match {
-  border-color: var(--clay);
-  box-shadow: 0 0 0 3px rgba(181, 105, 74, .35), var(--shadow);
-}
 
 .card-media {
   position: relative;
@@ -437,9 +390,9 @@ button { cursor: pointer; }
 }
 .empty-state h3 { color: var(--navy); font-family: var(--font-serif); font-size: 1.25rem; }
 
-/* =====================================================================
-   FOOTER
-   ===================================================================== */
+/* --------------------------------
+              FOOTER
+   -------------------------------- */
 .site-footer {
   background: var(--navy-dark);
   color: #c0cdd5;
@@ -454,9 +407,9 @@ button { cursor: pointer; }
 }
 .site-footer strong { color: #fff; font-family: var(--font-serif); font-size: 1rem; }
 
-/* =====================================================================
-   KERANJANG (drawer)
-   ===================================================================== */
+/* -------------------------------
+         KERANJANG (drawer)
+   ------------------------------- */
 .overlay {
   position: fixed;
   inset: 0;
@@ -561,9 +514,9 @@ button { cursor: pointer; }
 .cart-total { display: flex; justify-content: space-between; align-items: baseline; font-size: 1.05rem; }
 .cart-total strong { font-size: 1.3rem; color: var(--navy); }
 
-/* =====================================================================
-   PANEL LOG
-   ===================================================================== */
+/* --------------------------------
+            PANEL LOG
+   -------------------------------- */
 .log-dock {
   position: sticky;
   bottom: 0;
@@ -589,7 +542,6 @@ button { cursor: pointer; }
 
 .log-body { padding-bottom: 14px; }
 
-/* Tab (radio hack, tanpa JS) */
 .tab-radio {
   position: absolute;
   width: 1px; height: 1px;
@@ -643,7 +595,6 @@ button { cursor: pointer; }
   text-transform: uppercase;
   color: #a9bcc8;
 }
-/* Metode yang hanya berupa keterangan (bukan dropdown) */
 .method-name {
   padding: 8px 12px;
   border-radius: 8px;
@@ -696,9 +647,9 @@ button { cursor: pointer; }
 .log-line.is-miss    { color: #e8a5a0; font-weight: 700; }
 .log-empty { color: #7f95a3; font-style: italic; }
 
-/* =====================================================================
-   RESPONSIF RINGAN
-   ===================================================================== */
+/* --------------------------------
+          RESPONSIF RINGAN
+   ------------------------------- */
 @media (max-width: 860px) {
   .header-main { grid-template-columns: 1fr auto; gap: 14px; }
   .search { grid-column: 1 / -1; order: 3; max-width: none; }
@@ -711,3 +662,25 @@ button { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
 }
+
+.toast {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 50;
+  max-width: min(340px, calc(100vw - 36px));
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--clay);
+  background: var(--navy);
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(24, 38, 47, .3);
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+
+.toast.is-show { opacity: 1; transform: translateY(0); }
